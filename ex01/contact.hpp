@@ -13,6 +13,7 @@ private:
     std::string Fname;
     std::string Lname;
     std::string number;
+    std::string nickname;
     std::string Secret;
 
 public:
@@ -22,10 +23,12 @@ public:
     std::string getFname();
     std::string getLname();
     std::string getPhoneNumber();
+    std::string getNickname();
     std::string getSecret();
     // Member function declarations
-    std::string setFname(std::string n);
-    std::string setLname(std::string n);
-    std::string setPhoneNumber(std::string n);
-    std::string setSecret(std::string n);
+    void setFname(std::string n);
+    void setLname(std::string n);
+    void setPhoneNumber(std::string n);
+    void setNickname(std::string n);
+    void setSecret(std::string n);
 };

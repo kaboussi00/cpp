@@ -1,4 +1,4 @@
-NAME = ex01
+NAME = phonebook
 SRCS = phonebook.cpp
 INC = phonebook.hpp\
 	contact.hpp
