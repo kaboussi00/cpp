@@ -32,72 +32,14 @@ void Contact::setSecret(std::string n){
     Secret = n;
 }
 
+PhoneBook::PhoneBook(){
+    maxContact = 8;
+    sizeContact = 0;
+};
+
 void PhoneBook::addContact() {
+    int index = sizeContact % maxContact;
     std::string input;
-    if (sizeContact == maxContact) {
-       std::cout << "Enter contact information" << std::endl;
-        std::cout << "First Name     ? ";
-        std::getline(std::cin, input);
-        if (!std::cin.good()){exit(0);}
-        while (true){
-            if (input.length() == 0){std::cout<< "empty input" << std::endl;}
-            else{
-                contacts[sizeContact % maxContact].setFname(input);
-                break;
-            }
-            std::getline(std::cin, input);
-            if (!std::cin.good()){exit(0);}
-        }
-        std::cout << "Last Name      ? ";
-        std::getline(std::cin, input);
-        if (!std::cin.good()){exit(0);}
-        while (true){
-            if (input.length() == 0){std::cout<< "empty input" << std::endl;}
-            else{
-                contacts[sizeContact % maxContact].setLname(input);
-                break;
-            }
-            std::getline(std::cin, input);
-            if (!std::cin.good()){exit(0);}
-        }
-        std::cout << "Phone Number   ? ";
-        std::getline(std::cin, input);
-        if (!std::cin.good()){exit(0);}
-        while (true){
-            if (input.length() == 0){std::cout<< "empty input" << std::endl;}
-            else{
-                contacts[sizeContact % maxContact].setPhoneNumber(input);
-                break;
-            }
-            std::getline(std::cin, input);
-            if (!std::cin.good()){exit(0);}
-        }
-        std::cout << "Nick name      ? ";
-        std::getline(std::cin, input);
-        if (!std::cin.good()){exit(0);}
-         while (true){
-            if (input.length() == 0){std::cout<< "empty input" << std::endl;}
-            else{
-                contacts[sizeContact % maxContact].setNickname(input);
-                break;
-            }
-            std::getline(std::cin, input);
-            if (!std::cin.good()){exit(0);}
-        }
-        std::cout << "Darkest Secret ? ";
-        std::getline(std::cin, input);
-        if (!std::cin.good()){exit(0);}
-         while (true){
-            if (input.length() == 0){std::cout<< "empty input" << std::endl;}
-            else{
-                contacts[sizeContact % maxContact].setSecret(input);
-                break;
-            }
-            std::getline(std::cin, input);
-            if (!std::cin.good()){exit(0);}
-        } 
-}
-    else {
         std::cout << "Enter contact information" << std::endl;
         std::cout << "First Name     ? ";
         std::getline(std::cin, input);
@@ -105,7 +47,7 @@ void PhoneBook::addContact() {
         while (true){
             if (input.length() == 0){std::cout<< "empty input" << std::endl;}
             else{
-                contacts[sizeContact].setFname(input);
+                contacts[index].setFname(input);
                 break;
             }
             std::getline(std::cin, input);
@@ -117,7 +59,7 @@ void PhoneBook::addContact() {
         while (true){
             if (input.length() == 0){std::cout<< "empty input" << std::endl;}
             else{
-                contacts[sizeContact].setLname(input);
+                contacts[index].setLname(input);
                 break;
             }
             std::getline(std::cin, input);
@@ -129,7 +71,7 @@ void PhoneBook::addContact() {
         while (true){
             if (input.length() == 0){std::cout<< "empty input" << std::endl;}
             else{
-                contacts[sizeContact].setPhoneNumber(input);
+                contacts[index].setPhoneNumber(input);
                 break;
             }
             std::getline(std::cin, input);
@@ -141,7 +83,7 @@ void PhoneBook::addContact() {
          while (true){
             if (input.length() == 0){std::cout<< "empty input" << std::endl;}
             else{
-                contacts[sizeContact].setNickname(input);
+                contacts[index].setNickname(input);
                 break;
             }
             std::getline(std::cin, input);
@@ -153,14 +95,13 @@ void PhoneBook::addContact() {
          while (true){
             if (input.length() == 0){std::cout<< "empty input" << std::endl;}
             else{
-                contacts[sizeContact].setSecret(input);
+                contacts[index].setSecret(input);
                 break;
             }
             std::getline(std::cin, input);
             if (!std::cin.good()){exit(0);}
         }
         sizeContact++;
-    }
 }
 
 int	ft_atoi(std::string str)
@@ -181,15 +122,12 @@ int	ft_atoi(std::string str)
 		i++;
 	}
 	if (str[i] < 48 || str[i] > 57)
-    {
-		std :: cout << "invalid index!!" << std :: endl;
         return(0);
-    }
 	while (str[i] >= '0' && str[i] <= '9')
 		n = (n * 10) + str[i++] - 48;
 	if ((str[i] < 48 || str[i] > 57) && str[i])
     {
-		std :: cout << "invalid index!!" << std::endl;
+		std :: cout << "invalid index!!zz" << std::endl;
         return(0);
     }
 	return (n * s);
@@ -203,7 +141,11 @@ void PhoneBook::SearchContact() {
                <<std::setw(10) <<"Number Phone" << std::endl;
     std::cout << "=======================================================================" << std::endl;
 
-    for (int i = 0; i < sizeContact; i++) {
+    int size = sizeContact;
+    if (size > 8) {
+        size = 8;
+    }
+    for (int i = 0; i < size; i++) {
         std::string fnm = contacts[i].getFname();
         std::string lnm = contacts[i].getLname();
         std::string nmbr = contacts[i].getPhoneNumber();
@@ -233,8 +175,16 @@ void PhoneBook::SearchContact() {
     std::cout << "Enter the index of the contact to display: ";
     std::getline(std::cin, indx);
     if (!std::cin.good()){exit(0);}
-    if (indx.length() == 0){std::cout<< "empty input" << std::endl;}
     index = ft_atoi(indx);
+    while (true){
+        if (indx.length() == 0){std::cout<< "empty index" << std::endl;}
+        else{
+            break;
+        }
+        std::getline(std::cin, indx);
+        index = ft_atoi(indx);
+        if (!std::cin.good()){exit(0);}
+    }
     if (!index)
     {
         std::cout << "Invalid index!" << std::endl;

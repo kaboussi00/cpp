@@ -14,10 +14,7 @@ class PhoneBook{
         int sizeContact;
     public:
         // constractor declaration
-        PhoneBook(){
-            maxContact = 8;
-            sizeContact = 0;
-        };
+        PhoneBook();;
     
         //function mumbers
         void addContact();     
