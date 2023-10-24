@@ -208,7 +208,6 @@ void PhoneBook::SearchContact() {
 
 int main(){
     std::string var;
-    Contact cn;
     PhoneBook pn;
     while (true)
     {
