@@ -1,5 +1,7 @@
 NAME = phonebook
-SRCS = phonebook.cpp
+SRCS = phonebook.cpp\
+	 contact.cpp
+
 INC = phonebook.hpp\
 	contact.hpp
 

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -12,11 +14,10 @@ class PhoneBook{
         Contact contacts[8];
         int maxContact;
         int sizeContact;
+
     public:
-        // constractor declaration
         PhoneBook();
     
-        //function mumbers
         void addContact();     
         void SearchContact();
 };
