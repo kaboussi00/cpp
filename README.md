@@ -71,4 +71,19 @@ This C++ project is divided into several modules, each covering specific aspects
 
 - **C++ Templates:** Introduction to template programming in C++.
 
+## cpp_module_08:
+
+- **Templated Containers:** Introduction to templated containers for generic data storage.
+- **Iterators:** Usage of iterators for traversing containers.
+- **Algorithms:** Implementation and usage of standard algorithms for data manipulation.
+
+## cpp_module_09:
+
+- **STL:** Utilization of the Standard Template Library for efficient data structures and algorithms.
+- **Constraints:** Application of constraints to limit template parameter types.
+- **Reverse Polish Notation:** Understanding and implementing the Reverse Polish Notation for mathematical expressions.
+- **Merge-Insert Sort Algorithm:** Introduction to the merge-insert sort algorithm for efficient sorting.
+- **Ford-Johnson Algorithm:** Understanding and implementing the Ford-Johnson algorithm for finding shortest paths in a graph.
+
+
 
